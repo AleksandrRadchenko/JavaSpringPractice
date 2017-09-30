@@ -1,0 +1,5 @@
+rootProject.name = 'JavaSpringPractice'
+
+include 'core',
+		'basics'
+	'util'

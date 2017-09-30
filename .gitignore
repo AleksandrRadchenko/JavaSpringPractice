@@ -1,0 +1,9 @@
+*.class
+.idea
+out
+docs
+*.swp
+*.iml
+/.gradle/
+build
+~*
