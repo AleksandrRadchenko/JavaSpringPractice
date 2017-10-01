@@ -1,3 +1,5 @@
+package com.epam.spring.core.beans;
+
 import lombok.Value;
 
 @Value
