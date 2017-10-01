@@ -14,7 +14,7 @@
 
     <bean id="cacheFileLogger"
           class="com.epam.spring.core.loggers.CacheFileEventLogger"
-          init-method="init" destroy-method="destroy" parent="fileLogger">
+          destroy-method="destroy" parent="fileLogger">
         <constructor-arg value="3"/>
         <constructor-arg>
             <bean class="java.util.ArrayList"/>
