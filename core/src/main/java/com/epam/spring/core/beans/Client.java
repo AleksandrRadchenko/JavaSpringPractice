@@ -1,9 +1,13 @@
 package com.epam.spring.core.beans;
 
-import lombok.Value;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Value
+@RequiredArgsConstructor
 public class Client {
-    private String id;
-    private String fullName;
+    @Getter private final String id;
+    @Getter private final String fullName;
+
+    @Getter @Setter private String greeting;
 }
