@@ -11,7 +11,7 @@ public class Event {
     private final Date date;
     @Getter @Setter
     private String msg;
-    private DateFormat df;
+    private final DateFormat df;
 
     public Event(Date date, DateFormat df) {
         this.id = (int) Math.round(Math.random() * 100);

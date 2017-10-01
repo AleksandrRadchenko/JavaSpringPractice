@@ -6,12 +6,12 @@
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="client" class="com.epam.spring.core.beans.Client">
-        <constructor-arg index="0" value="1"/>
-        <constructor-arg index="1" value="John Smith"/>
+        <constructor-arg value="1"/>
+        <constructor-arg value="John Smith"/>
     </bean>
 
     <bean id="eventLogger"
-          class="com.epam.spring.core.loggers.ConsoleEventLoggerImpl"/>
+          class="com.epam.spring.core.loggers.ConsoleEventLogger"/>
 
     <bean id="app" class="com.epam.spring.core.App">
         <constructor-arg ref="client"/>
