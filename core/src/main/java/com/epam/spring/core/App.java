@@ -20,11 +20,12 @@ public class App {
         App app = (App) ctx.getBean(App.class);
 
         app.logEvent("Some event for user 1");
-        long i = 0;
-        while (i++ < 100000000) {
-            double d = Math.random();
-        }
+//        long i = 0;
+//        while (i++ < 100000000) {
+//            double d = Math.random();
+//        }
         app.logEvent("Some event for user 2");
+        app.logEvent("Some event for user 3");
     }
 
     private void logEvent(String msg) {

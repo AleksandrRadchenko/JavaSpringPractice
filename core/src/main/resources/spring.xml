@@ -11,7 +11,16 @@
     </bean>
 
     <bean id="eventLogger"
-          class="com.epam.spring.core.loggers.ConsoleEventLogger"/>
+          class="com.epam.spring.core.loggers.CacheFileEventLogger"
+          init-method="init">
+        <constructor-arg value="log.txt"/>
+        <constructor-arg value="3"/>
+        <constructor-arg>
+            <bean class="java.util.ArrayList"/>
+        </constructor-arg>
+    </bean>
+    <!--class="com.epam.spring.core.loggers.ConsoleEventLogger"/>-->
+    <!--class="com.epam.spring.core.loggers.FileEventLogger"-->
 
     <bean id="app" class="com.epam.spring.core.App">
         <constructor-arg ref="client"/>
