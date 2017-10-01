@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+    <bean id="consoleLogger" class="com.epam.spring.core.loggers.ConsoleEventLogger"/>
+
+    <bean id="fileLogger" class="com.epam.spring.core.loggers.FileEventLogger"
+          init-method="init">
+        <constructor-arg value="log.txt"/>
+    </bean>
+
+    <bean id="cacheFileLogger"
+          class="com.epam.spring.core.loggers.CacheFileEventLogger"
+          init-method="init" destroy-method="destroy" parent="fileLogger">
+        <constructor-arg value="3"/>
+        <constructor-arg>
+            <bean class="java.util.ArrayList"/>
+        </constructor-arg>
+    </bean>
+
+</beans>
