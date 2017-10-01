@@ -10,6 +10,7 @@
     <bean id="client" class="com.epam.spring.core.beans.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="John Smith"/>
+        <property name="greeting" value="Hello there!"/>
     </bean>
 
     <bean id="app" class="com.epam.spring.core.App">
