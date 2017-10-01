@@ -29,4 +29,9 @@ public class CacheFileEventLogger extends FileEventLogger {
     private void writeEventsFromCache() {
         FileUtils.writeLines(file, cache, true);
     }
+
+    public void destroy() {
+        if (!cache.isEmpty())
+            writeEventsFromCache();
+    }
 }

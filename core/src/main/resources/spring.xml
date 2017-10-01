@@ -12,7 +12,7 @@
 
     <bean id="eventLogger"
           class="com.epam.spring.core.loggers.CacheFileEventLogger"
-          init-method="init">
+          init-method="init" destroy-method="destroy">
         <constructor-arg value="log.txt"/>
         <constructor-arg value="3"/>
         <constructor-arg>

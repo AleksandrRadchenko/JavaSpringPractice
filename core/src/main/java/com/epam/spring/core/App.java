@@ -3,13 +3,13 @@ package com.epam.spring.core;
 import com.epam.spring.core.beans.Client;
 import com.epam.spring.core.beans.Event;
 import com.epam.spring.core.loggers.EventLogger;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
     private Client client;
     private EventLogger eventLogger;
-    private static ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+    private static ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
     public App(Client client, EventLogger eventLogger) {
         this.client = client;
@@ -25,7 +25,8 @@ public class App {
 //            double d = Math.random();
 //        }
         app.logEvent("Some event for user 2");
-        app.logEvent("Some event for user 3");
+//        app.logEvent("Some event for user 3");
+        ctx.close();
     }
 
     private void logEvent(String msg) {
