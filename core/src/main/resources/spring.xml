@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
- 		http://www.springframework.org/schema/beans
- 		http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util
- 		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+ 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
 
     <import resource="loggers.xml"/>
@@ -27,15 +26,15 @@
         <property name="greeting" value="${greeting}"/>
     </bean>
 
-    <bean id="app" class="com.epam.spring.core.App">
-        <constructor-arg ref="client"/>
-        <constructor-arg ref="cacheFileLogger"/>
-        <constructor-arg>
-            <map>
-                <entry key="ERROR" value-ref="combinedEventLogger"/>
-                <entry key="INFO" value-ref="consoleLogger"/>
-            </map>
-        </constructor-arg>
+    <util:map id="loggerMap">
+        <entry key="ERROR" value-ref="combinedEventLogger"/>
+        <entry key="INFO" value-ref="consoleLogger"/>
+    </util:map>
+
+    <bean id="app" class="com.epam.spring.core.App"
+          c:client-ref="client"
+          c:defaultLogger-ref="cacheFileLogger">
+        <constructor-arg ref="loggerMap"/>
     </bean>
 
     <bean id="event" class="com.epam.spring.core.beans.Event" scope="prototype">
