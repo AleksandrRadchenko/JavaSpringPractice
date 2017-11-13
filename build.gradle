@@ -1,6 +1,5 @@
-//	Aleksandr_radchenko: let's try Spring 5 for now...
-def springVersion = '+'
-//def springVersion = '4.3.11.RELEASE'
+def springVersion = '3.2.13.RELEASE'
+//def springVersion = '+'
 
 subprojects {
     group 'JavaSpringPractice'
@@ -12,7 +11,8 @@ subprojects {
     targetCompatibility = 1.8
 
     repositories {
-        mavenCentral()
+        jcenter()
+//        mavenCentral()
     }
 
     dependencies {
@@ -24,9 +24,6 @@ subprojects {
                 'org.springframework:spring-context-support:' + springVersion,
                 'org.springframework:spring-tx:' + springVersion,
                 'org.springframework:spring-jdbc:' + springVersion
-
-//	Aleksandr_radchenko: We are prohibited to use MVC, AFAIK
-//		'org.springframework:spring-mvc:' + springVersion
 
         compileOnly 'org.projectlombok:lombok:+'
 
