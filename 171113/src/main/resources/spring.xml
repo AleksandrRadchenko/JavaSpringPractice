@@ -4,6 +4,7 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="date" class="java.util.Date" scope="prototype"/>
     <bean id="eventLogger" class="com.spring.practice.ConsoleEventLogger"/>
     <bean id="client" class="com.spring.practice.Client"
           c:id="1"
@@ -11,5 +12,7 @@
     <bean id="app" name="Application" class="com.spring.practice.App"
           c:client-ref="client"
           c:logger-ref="eventLogger"/>
+    <bean id="event" class="com.spring.practice.Event" scope="prototype"
+    c:date-ref="date"/>
 
 </beans>
