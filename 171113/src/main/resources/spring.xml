@@ -2,7 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+       default-lazy-init="true">
+
+    <import resource="loggers.xml"/>
+    <import resource="clients.xml"/>
 
     <bean id="date" class="java.util.Date" factory-method="from" scope="prototype">
         <constructor-arg>
@@ -10,15 +16,21 @@
         </constructor-arg>
     </bean>
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance" scope="prototype"/>
-    <bean id="eventLogger" class="com.spring.practice.ConsoleEventLogger"/>
-    <bean id="client" class="com.spring.practice.Client"
-          c:id="1"
-          c:fullName="Vasya"/>
-    <bean id="app" name="Application" class="com.spring.practice.App"
-          c:client-ref="client"
-          c:logger-ref="eventLogger"/>
     <bean id="event" class="com.spring.practice.Event" scope="prototype"
           c:date-ref="date"
           c:df-ref="dateFormat"/>
+
+    <bean id="app" name="Application" class="com.spring.practice.App">
+        <constructor-arg name="logger">
+            <ref bean="cacheFileLogger"/>
+        </constructor-arg>
+        <constructor-arg name="clients">
+            <list>
+                <ref bean="client1"/>
+                <ref bean="client2"/>
+                <ref bean="client3"/>
+            </list>
+        </constructor-arg>
+    </bean>
 
 </beans>
