@@ -21,8 +21,11 @@
           c:df-ref="dateFormat"/>
 
     <bean id="app" name="Application" class="com.spring.practice.App">
-        <constructor-arg name="logger">
-            <ref bean="cacheFileLogger"/>
+        <constructor-arg name="loggers">
+            <map>
+                <entry key="INFO" value-ref="consoleLogger"/>
+                <entry key="ERROR" value-ref="combinedLogger"/>
+            </map>
         </constructor-arg>
         <constructor-arg name="clients">
             <list>
@@ -30,6 +33,9 @@
                 <ref bean="client2"/>
                 <ref bean="client3"/>
             </list>
+        </constructor-arg>
+        <constructor-arg name="defaultLogger">
+                <ref bean="fileLogger"/>
         </constructor-arg>
     </bean>
 
