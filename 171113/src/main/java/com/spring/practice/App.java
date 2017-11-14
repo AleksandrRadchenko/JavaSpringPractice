@@ -7,9 +7,10 @@ public class App {
     private Client client;
     private EventLogger logger;
 
-    private void logEvent(final String msg) {
-        String message = msg.replace(client.getId(), client.getFullName());
-        logger.logEvent(message);
+    private void logEvent(final Event event) {
+        String message = event.getMsg().replace(client.getId(), client.getFullName());
+        event.setMsg(message);
+        logger.logEvent(event);
     }
 
     public App(final Client client, final EventLogger logger) {
@@ -20,6 +21,8 @@ public class App {
     public static void main(String[] args) {
         final ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         final App app = ctx.getBean(App.class);
-        app.logEvent("Some message for user 1");
+        Event event = (Event) ctx.getBean("event");
+        event.setMsg("Some message for user 1");
+        app.logEvent(event);
     }
 }
