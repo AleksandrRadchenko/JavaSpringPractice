@@ -3,11 +3,11 @@ package com.spring.practice;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.swing.text.DateFormatter;
 import java.text.DateFormat;
 import java.util.Date;
 
 public class Event {
+    @Getter
     final private int id;
     @Setter
     @Getter

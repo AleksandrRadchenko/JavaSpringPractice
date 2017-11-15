@@ -2,6 +2,8 @@ package com.spring.practice;
 
 import com.spring.practice.logger.EventLogger;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +15,8 @@ import static com.spring.practice.EventType.INFO;
 
 @AllArgsConstructor
 public class App {
-//    private Client client;
+    private static final Logger log = LogManager.getLogger();
+
     final private List<Client> clients;
     final private Map<EventType, EventLogger> loggers;
     final private EventLogger defaultLogger;
@@ -29,7 +32,9 @@ public class App {
         if (logger == null) logger = defaultLogger;
 
         logger.logEvent(event);
+        log.info("Logged event id = " + event.getId());
     }
+
 
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
