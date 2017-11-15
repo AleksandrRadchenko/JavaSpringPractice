@@ -5,8 +5,6 @@ import com.spring.practice.Event;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CacheFileLogger extends FileLogger {
     private int cacheSize;
@@ -15,12 +13,10 @@ public class CacheFileLogger extends FileLogger {
     @Override
     public void init() throws IOException {
         super.init();
-        System.out.println("In init() of CacheFileLogger");
         cache = new ArrayList<>(cacheSize);
     }
 
     public void destroy() {
-        System.out.println("In destroy() method");
         if (!cache.isEmpty()) writeEventsFromCache();
     }
 
@@ -40,8 +36,6 @@ public class CacheFileLogger extends FileLogger {
     }
 
     private void writeEventsFromCache() {
-        String allMessages = Stream.of(cache).map(event -> event.toString()).collect(Collectors.joining());
-        System.out.println(allMessages);
         cache.forEach(super::logEvent);
     }
 }
