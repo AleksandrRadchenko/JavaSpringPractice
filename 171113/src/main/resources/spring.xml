@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:c="http://www.springframework.org/schema/c"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 
        default-lazy-init="true">
@@ -21,22 +20,9 @@
           c:df-ref="dateFormat"/>
 
     <bean id="app" name="Application" class="com.spring.practice.App">
-        <constructor-arg name="loggers">
-            <map>
-                <entry key="INFO" value-ref="consoleLogger"/>
-                <entry key="ERROR" value-ref="combinedLogger"/>
-            </map>
-        </constructor-arg>
-        <constructor-arg name="clients">
-            <list>
-                <ref bean="client1"/>
-                <ref bean="client2"/>
-                <ref bean="client3"/>
-            </list>
-        </constructor-arg>
-        <constructor-arg name="defaultLogger">
-                <ref bean="fileLogger"/>
-        </constructor-arg>
+        <constructor-arg name="loggers" ref="loggers"/>
+        <constructor-arg name="clients" ref="clients"/>
+        <constructor-arg name="defaultLogger" ref="fileLogger"/>
     </bean>
 
 </beans>
