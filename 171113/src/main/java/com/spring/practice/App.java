@@ -1,9 +1,10 @@
 package com.spring.practice;
 
+import com.spring.practice.SpringConfig.AppConfig;
 import com.spring.practice.logger.EventLogger;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        final ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         ctx.registerShutdownHook();
         final App app = ctx.getBean(App.class);
         Event event1 = (Event) ctx.getBean("event");

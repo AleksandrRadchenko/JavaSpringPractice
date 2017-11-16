@@ -2,6 +2,8 @@ package com.spring.practice.logger;
 
 import com.spring.practice.Event;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +13,13 @@ public class CacheFileLogger extends FileLogger {
     private List<Event> cache;
 
     @Override
+    @PostConstruct
     public void init() throws IOException {
         super.init();
         cache = new ArrayList<>(cacheSize);
     }
 
+    @PreDestroy
     public void destroy() {
         if (!cache.isEmpty()) writeEventsFromCache();
     }

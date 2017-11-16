@@ -73,3 +73,11 @@ Nov 14, 2017 3:56:41 PM: Id=52, msg=Some message for user Petya
 16.11.2017 1:33:40: Id=75, msg=Some message for user Petya
 16.11.2017 1:45:25: Id=81, msg=Some message for user Petya
 16.11.2017 13:30:33: Id=57, msg=Some message for user Petya
+16.11.2017: Id=84, msg=Some message for user PetyaJava
+16.11.2017: Id=21, msg=Some message for user PetyaJava
+16.11.2017: Id=35, msg=Some message for user PetyaJava
+16.11.2017 18:10:50: Id=12, msg=Some message for user PetyaJava
+16.11.2017 18:11:49: Id=61, msg=Some message for user PetyaJava
+16.11.2017 18:13:25: Id=85, msg=Some message for user PetyaJava
+16.11.2017 18:19:48: Id=19, msg=Some message for user PetyaJava
+16.11.2017 18:22:10: Id=24, msg=Some message for user PetyaJava
